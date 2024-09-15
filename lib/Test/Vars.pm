@@ -138,7 +138,7 @@ sub _check_vars {
     if(not exists $args->{ignore_vars}{'$self'}){
         $args->{ignore_vars}{'$self'}++;
     }
-print STDERR "DDD:\n";
+print STDERR "DDD: got this far\n";
     # ensure library loaded
     {
         local $SIG{__WARN__} = sub{ }; # ignore warnings
@@ -151,9 +151,9 @@ print STDERR "EEE:\n";
 pp(\@INC);
         if($file =~ s{\A (.*\b lib)/}{}xms){
             unshift @INC, $1;
+        }
 print STDERR "FFF:\n";
 pp(\@INC);
-        }
         eval { require $file };
 
         if($@){

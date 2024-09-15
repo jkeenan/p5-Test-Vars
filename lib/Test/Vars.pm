@@ -2,6 +2,7 @@ package Test::Vars;
 use 5.010_000;
 use strict;
 use warnings;
+use Data::Dump qw(dd pp);
 
 our $VERSION = '0.015_005';
 
@@ -107,6 +108,11 @@ sub _vars_ok {
 
 sub _check_vars {
     my($file, $args, $pipe) = @_;
+    print STDERR "AAA: file: $file\n";
+    print STDERR "BBB: args:\n";
+    pp($args);
+    print STDERR "CCC: pipe:\n";
+    pp($pipe);
 
     my @results;
 
@@ -132,7 +138,7 @@ sub _check_vars {
     if(not exists $args->{ignore_vars}{'$self'}){
         $args->{ignore_vars}{'$self'}++;
     }
-
+print STDERR "DDD:\n";
     # ensure library loaded
     {
         local $SIG{__WARN__} = sub{ }; # ignore warnings
@@ -141,8 +147,12 @@ sub _check_vars {
         local $^P = $^P | 0x200; # NAMEANON
 
         local @INC = @INC;
+print STDERR "EEE:\n";
+pp(\@INC);
         if($file =~ s{\A (.*\b lib)/}{}xms){
             unshift @INC, $1;
+print STDERR "FFF:\n";
+pp(\@INC);
         }
         eval { require $file };
 

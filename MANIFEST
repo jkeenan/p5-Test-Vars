@@ -21,12 +21,14 @@ t/07_stub_sub_bug.t
 t/08_undef_aux_list.t
 t/09_array_slice.t
 t/10_my_sub.t
+t/11_unused-gh-43.t
 t/lib/Aelemfast.pm
 t/lib/ArraySlice.pm
 t/lib/Closure.pm
 t/lib/CompileError.pm
 t/lib/Foreach.pm
 t/lib/ImplicitTopic.pm
+t/lib/MyMod.pm
 t/lib/MySub.pm
 t/lib/NotWarned.pm
 t/lib/NoWarnings.pm
